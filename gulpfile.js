@@ -19,20 +19,17 @@ var gls = require('gulp-live-server'); // Express server control for starting, r
 // Define a set of reusable paths
 var paths = {
   src: 'src/**/*', // All source files.
-  jsx: ['src/js/components/**/*.jsx', 'src/js/app.jsx'],  // JSX component files. Order of files matters for processing!
-  jsOrdered: ['!src/js/Dispatcher.js', 'src/js/components/**/*.jsx', 'src/js/app.jsx', 'src/js/**/*.js', 'src/js/**/*.jsx'], // All javascript files in the js directory with proper processing order
-  html: ['src/**/*.html'], // All HTML files
-  sass: ['src/styles/**/*.scss'], // All less files in the styles directory
-  bowerComponents: ['bower_components/*/dist/**/*'], // All distributable bower component files
-  tmp: 'tmp', // The intermediate build directory
-  dist: 'dist', // The target distribution directory
+  serverJSFiles: ['src/*.js', '!src/config.sample.js'],
+  webJSFiles: ['src/www/**/*.js'],
+  styles: ['src/www/styles/**/*.scss'], // All less files in the styles directory
+  dist: 'dist', // The target distribution directory for built files
   assets: 'dist/assets', // The target distribution assets directory
   targetJSFileName: 'app.min.js', // The target script filename
-  serverDist: 'server/dist', // The target distribution directory
+  targetCSSFileName: 'app.min.css', // The target stylesheet filename
   distContents: 'dist/**/*', // The contents of the target distribution directory
-  server: 'server/server.js', // Script for server
-  reloadWorthy: ['dist/**/*', 'src/server/**/*'], // Any files that should trigger a reload of the server
-  watchable: ['bower.json', 'src/**/*', '!src/server/**/*'] // Any files worth watching for rebuild
+  server: 'dist/server.bundle.js', // Script for server
+  reloadWorthy: ['dist/**/*'], // Any files that should trigger a reload of the server
+  watchable: ['bower.json', 'src/**/*'] // Any files worth watching for rebuild
 };
 
 gulp.task('watch', function() {
@@ -53,24 +50,29 @@ gulp.task('clean', function() {
   return del(paths.distContents);
 });
 
-gulp.task('build-js', function (done) {
-  // Concatenate, transpile any jsx, and minify the javascript files
-  return gulp.src(paths.jsOrdered)
-    .pipe(concat(paths.targetJSFileName)) // Concatenate all of the files together
-    .pipe(babel({ presets: ['es2015'] })) // Transpile the JSX
-    //.pipe(uglify()) // Minify
+gulp.task('build-server', function (done) {
+  return gulp.src(paths.serverJSFiles)
+    // Babel is loaded by webpack to transpile the JSX AND ES6
+    .pipe(webpack(require('./webpack.config.js'))) // Pack it up for browsers and server
+    .pipe(gulp.dest(paths.dist));
+});
+
+gulp.task('build-web-js', function (done) {
+  return gulp.src(paths.webJSFiles)
+    .pipe(concat('app.min.js')) // Concatenate all of the files together
+    .pipe(babel()) // Transpile the JSX AND ES6
     .pipe(gulp.dest(paths.assets));
 });
 
 gulp.task('build-css', function (done) {
   // Concatenate and compile SASS files, then autoprefix them for browser compatibility and minify
-  return gulp.src(paths.sass)
-    .pipe(concat('app.min.css')) // Concatenate all of the files together
+  return gulp.src(paths.styles)
+    .pipe(concat(paths.targetCSSFileName)) // Concatenate all of the files together
     .pipe(sass().on('error', sass.logError)) // Compile SASS
-    .pipe(autoprefixer({  // Autoprefix
+    /*.pipe(autoprefixer({  // Autoprefix
       browsers: ['last 2 versions'],
       cascade: false
-    }))
+    }))*/
     //.pipe(minifyCss({compatibility: 'ie8'})) // Minify
     .pipe(gulp.dest(paths.assets));
 });
@@ -84,20 +86,8 @@ gulp.task('pack-js', function (done) {
     .pipe(gulp.dest(paths.assets));
 });
 
-gulp.task('copy-html', function (done) {
-  // Copy source HTML to the dist folder
-  return gulp.src(paths.html)
-    .pipe(gulp.dest(paths.dist));
-});
-
-gulp.task('copy-dist', function (done) {
-  // Copy source HTML to the dist folder
-  return gulp.src(paths.distContents)
-    .pipe(gulp.dest(paths.serverDist));
-});
-
 gulp.task('build', function(callback) {
-  runSequence('clean', ['build-js', 'build-css', 'copy-html'], 'pack-js', 'copy-dist', callback);
+  runSequence('clean', ['build-server', /*'build-web-js', */'build-css'], callback);
 });
 
 // Common tasks and default

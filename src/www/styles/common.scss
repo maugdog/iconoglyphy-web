@@ -1,0 +1,28 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+html, body, #content {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+}
+
+// Style all h-tags using a SASS loop
+@for $index from 1 through 6 {
+  h#{$index} {
+    margin: 0px;
+  }
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+div {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
