@@ -20,7 +20,7 @@ var gls = require('gulp-live-server'); // Express server control for starting, r
 var paths = {
   src: 'src/**/*', // All source files.
   serverJSFiles: ['src/*.js', '!src/config.sample.js'],
-  webJSFiles: ['src/www/**/*.js'],
+  wwwJSFiles: ['src/www/**/*.js'],
   styles: ['src/www/styles/**/*.scss'], // All less files in the styles directory
   dist: 'dist', // The target distribution directory for built files
   assets: 'dist/assets', // The target distribution assets directory
@@ -53,14 +53,14 @@ gulp.task('clean', function() {
 gulp.task('build-server', function (done) {
   return gulp.src(paths.serverJSFiles)
     // Babel is loaded by webpack to transpile the JSX AND ES6
-    .pipe(webpack(require('./webpack.config.js'))) // Pack it up for browsers and server
+    .pipe(webpack(require('./webpack-server.config.js'))) // Pack it up for browsers and server
     .pipe(gulp.dest(paths.dist));
 });
 
-gulp.task('build-web-js', function (done) {
-  return gulp.src(paths.webJSFiles)
-    .pipe(concat('app.min.js')) // Concatenate all of the files together
-    .pipe(babel()) // Transpile the JSX AND ES6
+gulp.task('build-www-js', function (done) {
+  return gulp.src(paths.wwwJSFiles)
+    // Babel is loaded by webpack to transpile the JSX AND ES6
+    .pipe(webpack(require('./webpack-www.config.js'))) // Pack it up for browsers and server
     .pipe(gulp.dest(paths.assets));
 });
 
@@ -87,7 +87,7 @@ gulp.task('pack-js', function (done) {
 });
 
 gulp.task('build', function(callback) {
-  runSequence('clean', ['build-server', /*'build-web-js', */'build-css'], callback);
+  runSequence('clean', ['build-server', 'build-www-js', /*'build-web-js', */'build-css'], callback);
 });
 
 // Common tasks and default
