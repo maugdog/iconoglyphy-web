@@ -13,6 +13,8 @@ module.exports = {
   output: {
     filename: 'server.bundle.js'
   },
+  
+  devtool: 'source-map',
 
   target: 'node',
 

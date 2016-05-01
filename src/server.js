@@ -19,7 +19,6 @@ app.set('view engine', 'hbs');
 app.use('/assets', express.static('./dist/assets'));
 
 app.get('*', (req, res) => {
-  console.log('request!');
   match({ routes: routes, location: req.url }, (err, redirect, props) => {
     // in here we can make some decisions all at once
     if(err) {

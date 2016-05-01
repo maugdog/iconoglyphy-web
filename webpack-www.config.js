@@ -14,6 +14,8 @@ module.exports = {
     filename: 'bundle.js'
   },
 
+  devtool: 'source-map',
+
   module: {
     loaders: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader?presets[]=es2015&presets[]=react' }
