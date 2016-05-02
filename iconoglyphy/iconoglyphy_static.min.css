@@ -1,0 +1,46 @@
+/* Version number reflected in the URL for the font file */
+@font-face {
+  font-family: 'Iconoglyphy-Static';
+  src: url('https://s3.amazonaws.com/iconoglyphy.prod/src/0.0.1/iconoglyphy-static.otf') format('opentype');
+}
+
+.ig {
+  font-family: 'Iconoglyphy';
+  font-style: normal;
+}
+
+.ig.ig-iconoglyphy:after {
+  content: "\F000";
+}
+
+.ig.ig-power-o:after {
+  content: "\F001";
+}
+
+.ig.ig-circle-o:after {
+  content: "\F002";
+}
+
+.ig.ig-gear:after {
+  content: "\F003";
+}
+
+.ig.ig-gear-o:after {
+  content: "\F004";
+}
+
+.ig.ig-chevron-left:after {
+  content: "\F005";
+}
+
+.ig.ig-chevron-right:after {
+  content: "\F006";
+}
+
+.ig.ig-chevron-up:after {
+  content: "\F007";
+}
+
+.ig.ig-chevron-down:after {
+  content: "\F007";
+}

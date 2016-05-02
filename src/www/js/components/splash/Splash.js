@@ -1,5 +1,6 @@
 import React from 'react'
 import HeroSection from './HeroSection'
+import IconScroller from './IconScroller'
 
 export default React.createClass({
   render: function() {
@@ -8,10 +9,12 @@ export default React.createClass({
         <HeroSection>
 
           <div className="iconoglyphy-logo">
-            <h1>iconoglyphy</h1>
+            <i className="ig ig-iconoglyphy"></i><h1>iconoglyphy</h1>
           </div>
 
           <h3>Animated and static icons for your apps</h3>
+
+          <IconScroller />
 
         </HeroSection>
 
