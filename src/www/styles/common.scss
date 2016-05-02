@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Comfortaa:300);
 
 html, body, #content {
   width: 100%;
@@ -10,20 +11,78 @@ body {
   margin: 0px;
 }
 
-// Style all h-tags using a SASS loop
-@for $index from 1 through 6 {
-  h#{$index} {
-    margin: 0px;
-  }
+h1, h2, h3, h4, h5, h6 {
+  margin: 0px;
 }
 
-h1, h2, h3 {
+h1, h2 {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   font-weight: 700;
 }
 
+h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+}
+
 div {
   font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
   font-weight: 400;
+}
+
+.no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently not supported by any browser */
+}
+
+/************ COMPONENTS *************/
+
+/* BannerHeader */
+.banner-header {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background: $dark-grey;
+
+  font-weight: 300;
+  color: $light-text;
+  text-align: center;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.50);
+  -moz-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.50);
+  -webkit-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.50);
+}
+
+.navigation {
+  position: absolute;
+  right: 10px;
+  top: 64px;
+  margin: 0px;
+  z-index: 1;
+  list-style-type: none;
+
+  li {
+    display: inline;
+    display: inline;
+    padding: 0px 20px;
+    border-right: 1px solid $light-text;
+
+    &.nav-right {
+      border-right: 0px;
+    }
+
+    a {
+      font-weight: 400;
+      font-size: 16px;
+      color: $light-text;
+      text-decoration: none;
+    }
+  }
 }

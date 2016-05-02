@@ -7,7 +7,7 @@ var filter = require('gulp-filter'); // For filtering files using globs
 var order = require("gulp-order"); // For ordering the files in a stream
 var concat = require('gulp-concat'); // For concatenating files together
 var rename = require('gulp-rename'); // For renaming files
-var babel = require('gulp-babel'); // Babel transpiler used for parsing JSX syntax
+//var babel = require('gulp-babel'); // Babel transpiler used for parsing JSX syntax
 //var mainBowerFiles = require('main-bower-files'); // For accessing bower component files
 var sass = require('gulp-sass'); // For precompiling CSS with SASS
 var autoprefixer = require('gulp-autoprefixer'); // For autoprefixing CSS for cross-browser compatibility
@@ -26,6 +26,8 @@ var paths = {
   assets: 'dist/assets', // The target distribution assets directory
   targetJSFileName: 'app.min.js', // The target script filename
   targetCSSFileName: 'app.min.css', // The target stylesheet filename
+  //vendorJSFileName: 'vendor.min.js', // The target script filename for bower components
+  //vendorCSSFileName: 'vendor.min.css', // The target stylesheet filename for bower components
   distContents: 'dist/**/*', // The contents of the target distribution directory
   server: 'dist/server.bundle.js', // Script for server
   reloadWorthy: ['dist/**/*'], // Any files that should trigger a reload of the server
@@ -41,9 +43,9 @@ gulp.task('launch-server', function() {
   server.start();
 
   // Use gulp.watch to trigger server actions(notify, start or stop)
-  gulp.watch(paths.reloadWorthy, function (file) {
+  /*gulp.watch(paths.reloadWorthy, function (file) {
     server.notify.apply(server, [file]);
-  });
+  });*/
 });
 
 gulp.task('clean', function() {
@@ -86,8 +88,25 @@ gulp.task('pack-js', function (done) {
     .pipe(gulp.dest(paths.assets));
 });
 
+// Collect and package all of the needed bower components
+/*gulp.task('bower-components-js', function (done) {
+  return gulp.src(mainBowerFiles(), { base: './bower_components' })
+    .pipe(filter('*.js','!*.min.js'))
+    .pipe(concat(paths.vendorJSFileName))
+    .pipe(uglify()) // Minify
+    .pipe(gulp.dest(paths.assets));
+});
+
+gulp.task('bower-components-css', function (done) {
+  return gulp.src(mainBowerFiles())
+    .pipe(filter('*.css','!*.min.css'))
+    .pipe(concat(paths.vendorCSSFileName))
+    .pipe(uglify()) // Minify
+    .pipe(gulp.dest(paths.assets));
+});*/
+
 gulp.task('build', function(callback) {
-  runSequence('clean', ['build-server', 'build-www-js', /*'build-web-js', */'build-css'], callback);
+  runSequence('clean', ['build-server', 'build-www-js', 'build-css'/*, 'bower-components-js', 'bower-components-css'*/], callback);
 });
 
 // Common tasks and default

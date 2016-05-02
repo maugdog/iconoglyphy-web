@@ -3,7 +3,7 @@ import React from 'react'
 export default React.createClass({
   render: function() {
     return (
-      <div className="downloadPage">Download!</div>
+      <div className="icons-page">Icons!</div>
     );
   }
 });

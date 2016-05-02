@@ -2,15 +2,22 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="description" content="Free vector-based icons that you can color and scale">
+    <meta name="author" content="Max Montgelas">
     <title>Iconoglyphy | Icons for Your App Wrapped up in A Font</title>
 
-    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="assets/app.min.css">
+
   </head>
   <body>
     <div id="content">{{{ pageContent }}}</div>
 
+    <!-- Placing the script tags at the bottom of the body allows the document to load first, and provides a non-blocking experience -->
     <script src="assets/bundle.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
   </body>
 </html>

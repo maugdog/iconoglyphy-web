@@ -1,0 +1,24 @@
+{
+  "name": "iconoglyphy-web",
+  "description": "React-Flux website for iconoglyphy.com",
+  "main": "server.js",
+  "authors": [
+    "Max Montgelas"
+  ],
+  "license": "UNLICENSED",
+  "keywords": [
+    "iconoglyphy",
+    "web"
+  ],
+  "homepage": "https://github.com/maugdog/iconoglyphy-web",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
