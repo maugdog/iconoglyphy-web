@@ -9,6 +9,7 @@ html, body, #content {
 
 body {
   margin: 0px;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -31,6 +32,12 @@ div {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 300;
 }
 
 .no-select {

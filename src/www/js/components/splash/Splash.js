@@ -1,6 +1,7 @@
 import React from 'react'
-import HeroSection from './HeroSection'
+import HeroSection from '../common/HeroSection'
 import IconScroller from './IconScroller'
+import InstructionsSection from './InstructionsSection'
 
 export default React.createClass({
   render: function() {
@@ -17,6 +18,8 @@ export default React.createClass({
           <IconScroller />
 
         </HeroSection>
+
+        <InstructionsSection />
 
         {this.props.children}
       </div>

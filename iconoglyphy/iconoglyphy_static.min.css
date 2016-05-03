@@ -4,10 +4,26 @@
   src: url('https://s3.amazonaws.com/iconoglyphy.prod/src/0.0.1/iconoglyphy-static.otf') format('opentype');
 }
 
+
 .ig {
-  font-family: 'Iconoglyphy';
+  font-family: 'Iconoglyphy-Static';
   font-style: normal;
 }
+
+/* ANIMATION */
+
+.ig-spin {
+  display: inline-block;
+  -webkit-animation:ig_rotation 3s linear infinite;
+  -moz-animation:ig_rotation 3s linear infinite;
+  animation:ig_rotation 3s linear infinite;
+}
+
+@-moz-keyframes ig_rotation { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes ig_rotation { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes ig_rotation { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+/* ICONS */
 
 .ig.ig-iconoglyphy:after {
   content: "\F000";
@@ -21,7 +37,7 @@
   content: "\F002";
 }
 
-.ig.ig-gear:after {
+.ig.ig-circle:after {
   content: "\F003";
 }
 
@@ -29,18 +45,38 @@
   content: "\F004";
 }
 
-.ig.ig-chevron-left:after {
+.ig.ig-gear:after {
   content: "\F005";
 }
 
-.ig.ig-chevron-right:after {
+.ig.ig-chevron-left:after {
   content: "\F006";
 }
 
-.ig.ig-chevron-up:after {
+.ig.ig-chevron-right:after {
   content: "\F007";
 }
 
+.ig.ig-chevron-up:after {
+  content: "\F008";
+}
+
 .ig.ig-chevron-down:after {
-  content: "\F007";
+  content: "\F009";
+}
+
+.ig.ig-close:after {
+  content: "\F00A";
+}
+
+.ig.ig-close-circle:after {
+  content: "\F00B";
+}
+
+.ig.ig-plus:after {
+  content: "\F00C";
+}
+
+.ig.ig-plus-circle:after {
+  content: "\F00D";
 }
