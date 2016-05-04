@@ -1,7 +1,8 @@
 /* Version number reflected in the URL for the font file */
 @font-face {
   font-family: 'Iconoglyphy-Static';
-  src: url('https://s3.amazonaws.com/iconoglyphy.prod/src/0.0.1/iconoglyphy-static.otf') format('opentype');
+  src: url('/assets/iconoglyphy-static.otf') format('opentype');
+  /*src: url('https://s3.amazonaws.com/iconoglyphy.prod/src/0.0.1/iconoglyphy-static.otf') format('opentype');*/
 }
 
 
@@ -13,7 +14,7 @@
 /* ANIMATION */
 
 .ig-spin {
-  display: inline-block;
+  display: inline-block; /* Can't transform an inline element! */
   -webkit-animation:ig_rotation 3s linear infinite;
   -moz-animation:ig_rotation 3s linear infinite;
   animation:ig_rotation 3s linear infinite;

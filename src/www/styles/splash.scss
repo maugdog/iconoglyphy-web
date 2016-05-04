@@ -80,13 +80,20 @@
   }
 }
 
-.instructions-section {
+.instructions-wrapper {
   margin-top: 16px;
 
   h3 {
-    font-size: 36px;
+    margin: 8px 0px;
+    font-size: 34px;
   }
   p {
+    margin: 4px 0px;
     font-size: 20px;
+  }
+  pre {
+    background: #EDEDED;
+    padding: 10px;
+    border-radius: 3px;
   }
 }

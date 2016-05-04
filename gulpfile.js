@@ -22,6 +22,7 @@ var paths = {
   serverJSFiles: ['src/*.js', '!src/config.sample.js'],
   wwwJSFiles: ['src/www/**/*.js'],
   styles: ['src/www/styles/**/*.scss'], // All less files in the styles directory
+  iconSrcFiles: ['iconoglyphy/**/*'], // Src files for the icon package
   dist: 'dist', // The target distribution directory for built files
   assets: 'dist/assets', // The target distribution assets directory
   targetJSFileName: 'app.min.js', // The target script filename
@@ -31,11 +32,11 @@ var paths = {
   distContents: 'dist/**/*', // The contents of the target distribution directory
   server: 'dist/server.bundle.js', // Script for server
   reloadWorthy: ['dist/**/*'], // Any files that should trigger a reload of the server
-  watchable: ['bower.json', 'src/**/*'] // Any files worth watching for rebuild
+  watchable: ['bower.json', 'src/**/*', 'iconoglyphy/*'] // Any files worth watching for rebuild
 };
 
 gulp.task('watch', function() {
-  gulp.watch(paths.watchable, ['build']);
+  gulp.watch(paths.watchable, ['build-dev']);
 });
 
 gulp.task('launch-server', function() {
@@ -88,6 +89,12 @@ gulp.task('pack-js', function (done) {
     .pipe(gulp.dest(paths.assets));
 });
 
+gulp.task('build-icon-package', function (done) {
+  return gulp.src(paths.iconSrcFiles)
+    //.pipe(uglify()) // Minify
+    .pipe(gulp.dest(paths.assets));
+});
+
 // Collect and package all of the needed bower components
 /*gulp.task('bower-components-js', function (done) {
   return gulp.src(mainBowerFiles(), { base: './bower_components' })
@@ -109,8 +116,16 @@ gulp.task('build', function(callback) {
   runSequence('clean', ['build-server', 'build-www-js', 'build-css'/*, 'bower-components-js', 'bower-components-css'*/], callback);
 });
 
+gulp.task('build-dev', function(callback) {
+  runSequence('clean', ['build-server', 'build-www-js', 'build-css', 'build-icon-package'], callback);
+});
+
 // Common tasks and default
 gulp.task('serve', function(callback) {
-  runSequence('build', 'launch-server', 'watch', callback);
+  runSequence('clean', 'build', 'launch-server', callback);
 });
-gulp.task('default', ['serve']);
+gulp.task('serve-dev', function(callback) {
+  runSequence('clean', 'build-dev', 'launch-server', 'watch', callback);
+});
+
+gulp.task('default', ['serve-dev']);
