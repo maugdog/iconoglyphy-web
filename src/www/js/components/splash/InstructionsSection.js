@@ -1,5 +1,7 @@
-import React from 'react'
-import Instructions from '../common/Instructions'
+/*jshint multistr: true */
+
+import React from 'react';
+import Instructions from '../common/Instructions';
 
 var codeBlock = '<head>\
 	<!-- your other code -->\

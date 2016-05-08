@@ -1,6 +1,6 @@
-import React from 'react'
-import BannerHeader from './common/BannerHeader'
-import Navigation from './common/Navigation'
+import React from 'react';
+import BannerHeader from './common/BannerHeader';
+import Navigation from './common/Navigation';
 
 export default React.createClass({
   render: function() {

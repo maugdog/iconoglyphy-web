@@ -1,5 +1,5 @@
-import React from 'react'
-import HeroSection from '../common/HeroSection'
+import React from 'react';
+import HeroSection from '../common/HeroSection';
 
 export default React.createClass({
   render: function() {

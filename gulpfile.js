@@ -1,6 +1,8 @@
 var gulp = require('gulp');
 
 var runSequence = require('run-sequence');
+var jshint = require('gulp-jshint');
+var stylish = require('jshint-stylish');
 var del = require('del');
 var savefile = require('gulp-savefile'); // For saving a stream back to disk
 var filter = require('gulp-filter'); // For filtering files using globs
@@ -51,6 +53,13 @@ gulp.task('launch-server', function() {
 
 gulp.task('clean', function() {
   return del(paths.distContents);
+});
+
+gulp.task('lint', function() {
+  return gulp.src(paths.serverJSFiles.concat(paths.wwwJSFiles))
+    .pipe(jshint({"linter": require('jshint-jsx').JSXHINT}))
+    .pipe(jshint.reporter('jshint-stylish'))
+    .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('build-server', function (done) {
@@ -117,7 +126,7 @@ gulp.task('build', function(callback) {
 });
 
 gulp.task('build-dev', function(callback) {
-  runSequence('clean', ['build-server', 'build-www-js', 'build-css', 'build-icon-package'], callback);
+  runSequence('clean', 'lint', ['build-server', 'build-www-js', 'build-css', 'build-icon-package'], callback);
 });
 
 // Common tasks and default

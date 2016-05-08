@@ -4,11 +4,11 @@ var path = require('path');
 var config = require('./config');
 
 // Import React stuff
-import React from 'react'
-import { renderToString } from 'react-dom/server'
-import { match, RouterContext } from 'react-router'
-import routes from './www/js/routes'
-//import Routes from '../web-client/js/components/splash/FullScreenHero'
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { match, RouterContext } from 'react-router';
+import routes from './www/js/routes';
+//import Routes from '../web-client/js/components/splash/FullScreenHero';
 
 // Use handlebars as the view engine
 var expressHbs = require('express-handlebars');
@@ -23,7 +23,7 @@ app.get('*', (req, res) => {
     // in here we can make some decisions all at once
     if(err) {
       // there was an error somewhere during route matching
-      res.status(500).send(err.message)
+      res.status(500).send(err.message);
     } else if (redirect) {
       // we haven't talked about `onEnter` hooks on routes, but before a
       // route is entered, it can redirect. Here we handle on the server.
@@ -35,8 +35,8 @@ app.get('*', (req, res) => {
       // no errors, no redirect, we just didn't match anything
       res.status(404).send('Not Found');
     }
-  })
-})
+  });
+});
 
 // Launch the server
 var server = app.listen(config.server.httpPort, function () {

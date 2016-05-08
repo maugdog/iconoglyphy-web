@@ -1,7 +1,7 @@
-import React from 'react'
-import HeroSection from '../common/HeroSection'
-import IconScroller from './IconScroller'
-import InstructionsSection from './InstructionsSection'
+import React from 'react';
+import HeroSection from '../common/HeroSection';
+import IconScroller from './IconScroller';
+import InstructionsSection from './InstructionsSection';
 
 export default React.createClass({
   render: function() {
