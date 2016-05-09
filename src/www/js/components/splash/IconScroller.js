@@ -1,21 +1,38 @@
 import React from 'react';
+import Slider from 'react-slick';
 
 export default React.createClass({
   render: function() {
+    var settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 6,
+      slidesToScroll: 1,
+      autoplay: true,
+      arrows: false
+    };
     return (
       <div className="icon-scroller">
-        <i className="ig ig-chevron-left nav-left"></i>
 
         <div className="scroll-content icons">
-          <i className="ig ig-gear-o"></i>
-          <i className="ig ig-gear ig-spin" key="123456789"></i>
-          <i className="ig ig-circle-o"></i>
-          <i className="ig ig-power-o"></i>
-          <i className="ig ig-close-circle"></i>
-          <i className="ig ig-plus-circle"></i>
+          <div className="fade-overlay fade-left"></div>
+          <Slider {...settings}>
+            <div className="ig ig-gear-o"></div>
+            <div className="ig ig-refresh"></div>
+            <div className="ig ig-power-o"></div>
+            <div className="ig ig-info-circle-o"></div>
+            <div className="ig ig-close-circle"></div>
+            <div className="ig ig-home"></div>
+            <div className="ig ig-plus-circle"></div>
+            <div className="ig ig-close"></div>
+            <div className="ig ig-document"></div>
+            <div className="ig ig-question-circle-o"></div>
+            <div className="ig ig-plus"></div>
+          </Slider>
+          <div className="fade-overlay fade-right"></div>
         </div>
 
-        <i className="ig ig-chevron-right nav-right"></i>
       </div>
     );
   }

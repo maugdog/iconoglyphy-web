@@ -1,6 +1,7 @@
 import React from 'react';
 import BannerHeader from './common/BannerHeader';
 import Navigation from './common/Navigation';
+import Footer from './common/Footer';
 
 export default React.createClass({
   render: function() {
@@ -11,6 +12,8 @@ export default React.createClass({
         <Navigation />
 
         {this.props.children}
+
+        <Footer />
       </div>
     );
   }

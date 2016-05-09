@@ -2,7 +2,7 @@
 @font-face {
   font-family: 'Iconoglyphy-Static';
   src: url('/assets/iconoglyphy-static.otf') format('opentype');
-  /*src: url('https://s3.amazonaws.com/iconoglyphy.prod/src/0.0.1/iconoglyphy-static.otf') format('opentype');*/
+  /*src: url('https://d23mmkdgz8do5o.cloudfront.net/src/0.0.1/iconoglyphy-static.otf') format('opentype');*/
 }
 
 
@@ -18,6 +18,20 @@
   -webkit-animation:ig_rotation 3s linear infinite;
   -moz-animation:ig_rotation 3s linear infinite;
   animation:ig_rotation 3s linear infinite;
+}
+
+.ig-spin-slow {
+  display: inline-block; /* Can't transform an inline element! */
+  -webkit-animation:ig_rotation 5s linear infinite;
+  -moz-animation:ig_rotation 5s linear infinite;
+  animation:ig_rotation 5s linear infinite;
+}
+
+.ig-spin-fast {
+  display: inline-block; /* Can't transform an inline element! */
+  -webkit-animation:ig_rotation 1s linear infinite;
+  -moz-animation:ig_rotation 1s linear infinite;
+  animation:ig_rotation 1s linear infinite;
 }
 
 @-moz-keyframes ig_rotation { 100% { -moz-transform: rotate(360deg); } }
@@ -80,4 +94,24 @@
 
 .ig.ig-plus-circle:after {
   content: "\F00D";
+}
+
+.ig.ig-refresh:after {
+  content: "\F00E";
+}
+
+.ig.ig-question-circle-o:after {
+  content: "\F00F";
+}
+
+.ig.ig-info-circle-o:after {
+  content: "\F010";
+}
+
+.ig.ig-home:after {
+  content: "\F011";
+}
+
+.ig.ig-document:after {
+  content: "\F012";
 }

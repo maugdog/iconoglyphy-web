@@ -87,10 +87,47 @@ p {
     }
 
     a {
+      display: inline-block;
       font-weight: 400;
       font-size: 16px;
       color: $light-text;
       text-decoration: none;
+
+      i.ig {
+        padding-right: 8px;
+        vertical-align: middle;
+        font-size: 14px;
+      }
+      span {
+        vertical-align: middle;
+      }
     }
+  }
+}
+
+.footer-section {
+  width: 100%;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.documentation-wrapper {
+  h3 {
+    margin: 8px 0px;
+    font-size: 34px;
+  }
+  p {
+    margin: 4px 0px;
+    font-size: 20px;
+
+    a {
+      text-decoration: none;
+    }
+  }
+  pre {
+    background: #EDEDED;
+    padding: 10px;
+    border-radius: 3px;
   }
 }

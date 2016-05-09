@@ -52,8 +52,9 @@
     max-width: 700px;
     height: 60px;
     text-align: center;
+    overflow: hidden;
 
-    .nav-left, .nav-right {
+    /*.nav-left, .nav-right {
       position: absolute;
       top: 10px;
       font-size: 40px;
@@ -64,17 +65,47 @@
     }
 
     .nav-left { left: 0px; }
-    .nav-right { right: 0px; }
+    .nav-right { right: 0px; }*/
 
     .scroll-content {
       display: inline-block;
-      width: auto;
+      overflow: hidden;
 
-      .ig {
-        margin: 0px 12px;
-        font-size: 60px;
-        line-height: 60px;
-        color: $light-text;
+      .fade-overlay {
+        position: absolute;
+        top: 0px;
+        z-index: 1;
+        height: 100%;
+        width: 16px;
+
+        &.fade-left {
+          left: 0px;
+          /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff7000+0,000000+100&1+0,0+100 */
+          background: -moz-linear-gradient(left,  rgba(255,112,0,1) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+          background: -webkit-linear-gradient(left,  rgba(255,112,0,1) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+          background: linear-gradient(to right,  rgba(255,112,0,1) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+        }
+
+        &.fade-right {
+          right: 0px;
+          /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,ff7000+100&0+0,1+100 */
+          background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(255,112,0,1) 100%); /* FF3.6-15 */
+          background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(255,112,0,1) 100%); /* Chrome10-25,Safari5.1-6 */
+          background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(255,112,0,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#ff7000',GradientType=1 ); /* IE6-9 */
+        }
+      }
+
+      div {
+        display: inline-block;
+
+        .ig {
+          max-width: 16.67%;
+          font-size: 60px;
+          line-height: 60px;
+          color: $light-text;
+        }
       }
     }
   }
@@ -82,18 +113,4 @@
 
 .instructions-wrapper {
   margin-top: 16px;
-
-  h3 {
-    margin: 8px 0px;
-    font-size: 34px;
-  }
-  p {
-    margin: 4px 0px;
-    font-size: 20px;
-  }
-  pre {
-    background: #EDEDED;
-    padding: 10px;
-    border-radius: 3px;
-  }
 }
