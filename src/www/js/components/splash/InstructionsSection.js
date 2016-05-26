@@ -37,11 +37,22 @@ export default React.createClass({
 								&lt;i class="ig ig-gear" aria-hidden="true"&gt;&lt;/i&gt;
 							</Documentation.CodeBlock>
 
+							<Documentation.PlainText>Iconoglyphy provides convenient css classes for basic animation of icons.</Documentation.PlainText>
+							<Documentation.PlainText>Continuous 360 degree spin:</Documentation.PlainText>
+							<Documentation.CodeBlock>
+								&lt;!-- spin an icon --&gt;<br/>
+								&lt;i class="ig ig-refresh ig-spin" aria-hidden="true"&gt;&lt;/i&gt;<br/>
+								&lt;!-- spin faster --&gt;<br/>
+								&lt;i class="ig ig-refresh ig-spin-fast" aria-hidden="true"&gt;&lt;/i&gt;<br/>
+								&lt;!-- spin slower --&gt;<br/>
+								&lt;i class="ig ig-refresh ig-spin-slow" aria-hidden="true"&gt;&lt;/i&gt;
+							</Documentation.CodeBlock>
+
 							<Documentation.Header>Usage - iPhone, Android, Etc.</Documentation.Header>
 							<Documentation.PlainText>
 								Currently Iconoglyphy can only be used on other platforms by downloading the font and then rendering a
 								text element with the desired icon's unicode character set as the string value. The font can be downloaded
-								here: <a href="https://d23mmkdgz8do5o.cloudfront.net/src/0.0.1/iconoglyphy-static.otf">Iconoglyphy Open Type Font</a>
+								here: <a href="https://d23mmkdgz8do5o.cloudfront.net/src/0.0.1/iconoglyphy-static.otf">iconoglyphy-static.otf</a>
 							</Documentation.PlainText>
 
 						</Documentation>
